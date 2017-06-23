@@ -1,36 +1,19 @@
-import { Todo } from './todo';
+import { Aurelia } from 'aurelia-framework';
+import { Router, RouterConfiguration } from 'aurelia-router';
+import { PLATFORM } from 'aurelia-pal';
 
 export class App {
-    heading = "Todos";
-    todos: Todo[] = [];
-    todoDescription = '';
+  router: Router;
 
-    addTodo() {
-        if (this.todoDescription) {
-            // this.todos.push(new Todo(this.todoDescription));
+  configureRouter(config: RouterConfiguration, router: Router) {
+    config.title = 'Aurelia';
+    config.map([
+      { route: ['', 'welcome'], name: 'welcome', moduleId: PLATFORM.moduleName('./welcome'), nav: true, title: 'Welcome' },
+      { route: 'users', name: 'users', moduleId: PLATFORM.moduleName('./users'), nav: true, title: 'Github Users' },
+      { route: 'child-router', name: 'child-router', moduleId: PLATFORM.moduleName('./child-router'), nav: true, title: 'Child Router' },
+      { route: 'bookmarks', name: 'bookmarks', moduleId: PLATFORM.moduleName('./bookmarks'), nav: true, title: 'Bookmarks' },
+    ]);
 
-            var testtodo = new Todo();
-            testtodo.description = this.todoDescription;
-            this.todos.push(testtodo);
-
-            this.todoDescription = '';
-        }
-    }
-
-    removeTodo(todo) {
-        let index = this.todos.indexOf(todo);
-        if (index !== -1) {
-            this.todos.splice(index, 1);
-        }
-    }
-
-    givemedata(todo) {
-        alert(todo.description);
-    }
-
-
-
+    this.router = router;
+  }
 }
-
-
-
