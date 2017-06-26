@@ -2,7 +2,8 @@
     <h1>${heading}</h1>
 
     <form submit.trigger="addLink()">
-        <input type="text" value.bind="linkDescription">
+        <input type="text" value.bind="linkDescription" placeholder="link">
+        <input type="text" value.bind="linkDescription2" placeholder="description">
         <button type="submit">Add Link</button>
     </form>
 
@@ -13,7 +14,7 @@
         <li repeat.for="link of links">
             <input type="checkbox" checked.bind="link.done">
             <span css="text-decoration: ${link.done ? 'line-through' : 'none'}">
-        ${link.description}
+        <a href="https://${link.description}">${link.description}</a> - ${link.description2}
       </span>
 
             <button click.trigger="removeLink(link)">Remove</button>
