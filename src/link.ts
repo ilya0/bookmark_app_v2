@@ -1,6 +1,6 @@
 // create a class to hold the todo object
 
-export class Todo {
+export class Link {
     done: boolean = false;
     description: string;
 

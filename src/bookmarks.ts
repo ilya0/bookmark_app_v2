@@ -1,28 +1,30 @@
-import { Todo } from './todo';
+import { Link } from './link';
 
 export class App {
-    heading = "Bookmarks Saver";
-    todos: Todo[] = [];
-    todoDescription = '';
+    heading = "Links Saver";
+    links: Link[] = [];
+    linkDescription = '';
 
-    addTodo() {
-        if (this.todoDescription) {
-            console.log("addtodo ran")
-            // this.todos.push(new Todo(this.todoDescription));
 
-            var testtodo = new Todo();
-            testtodo.description = this.todoDescription;
-            this.todos.push(testtodo);
+    //adds the
+    addLink() {
+        if (this.linkDescription) {
+            console.log("add todo ran")
+            // this.links.push(new Todo(this.linkDescription));
 
-            this.todoDescription = '';
+            var item = new Link();
+            item.description = this.linkDescription;
+            this.links.push(item);
+
+            this.linkDescription = '';
         }
-        console.log(this.todos);
+        console.log(this.links);
     }
 
-    removeTodo(todo) {
-        let index = this.todos.indexOf(todo);
+    removeLink(todo) {
+        let index = this.links.indexOf(todo);
         if (index !== -1) {
-            this.todos.splice(index, 1);
+            this.links.splice(index, 1);
 
         }
     }
